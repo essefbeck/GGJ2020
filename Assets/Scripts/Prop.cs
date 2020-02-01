@@ -24,6 +24,12 @@ public class Prop : MonoBehaviour
         m_SelectionHalo.SetActive(false);
     }
 
+    public void BeginWork()
+    {
+        m_SelectionHalo.SetActive(false);
+        gameObject.layer = LayerMask.NameToLayer("Default");
+    }
+
     public void DoWork()
     {
         if (finished)

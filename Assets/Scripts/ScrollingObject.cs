@@ -18,7 +18,7 @@ public class ScrollingObject : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "Eraser")
+        if (collider.gameObject.CompareTag("Eraser"))
         {
             Destroy(gameObject);
         }
