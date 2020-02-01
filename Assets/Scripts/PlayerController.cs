@@ -6,6 +6,21 @@ using UnityEngine.InputSystem.Users;
 
 public class PlayerController : MonoBehaviour
 {
+    public float snapDistance;
+
+    public float speed;
+
+    private GameObject currentProp;
+
+    enum State
+    {
+        Idle,
+        Moving,
+        Working
+    }
+
+    private State state = State.Idle;
+
     [SerializeField] private Transform m_pointerRoot;
     [SerializeField] private PlayerInput m_PlayerInput;
     
@@ -44,47 +59,121 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Update()
+    public void Update()
     {
-        if (m_aimDirection.sqrMagnitude > 0f)
+        switch (state)
         {
-            m_pointerRoot.gameObject.SetActive(true);
-            m_pointerRoot.eulerAngles = new Vector3(0, 0, Vector2.SignedAngle(Vector2.up, m_aimDirection));
-
-            if (Physics2D.RaycastNonAlloc(m_pointerRoot.position, m_aimDirection, m_RaycastResults, 100f, m_RaycastLayerMask) > 0)
-            {
-                var hit = m_RaycastResults[0];
-                
-                var target =hit.transform.GetComponent<Targetable>();
-
-                if (target != m_CurrentTarget)
+            case State.Idle:
+                if (m_aimDirection.sqrMagnitude > 0f)
                 {
+                    m_pointerRoot.gameObject.SetActive(true);
+                    m_pointerRoot.eulerAngles = new Vector3(0, 0, Vector2.SignedAngle(Vector2.up, m_aimDirection));
+
+                    if (Physics2D.RaycastNonAlloc(m_pointerRoot.position, m_aimDirection, m_RaycastResults, 100f, m_RaycastLayerMask) > 0)
+                    {
+                        var hit = m_RaycastResults[0];
+                
+                        var target =hit.transform.GetComponent<Targetable>();
+
+                        if (target != m_CurrentTarget)
+                        {
+                            if (m_CurrentTarget != null)
+                            {
+                                m_CurrentTarget.Untarget();
+                            }
+
+                            target.Target();
+                            m_CurrentTarget = target;
+                        }
+                    }
+                    else
+                    {
+                        if (m_CurrentTarget != null)
+                        {
+                            m_CurrentTarget.Untarget();
+                            m_CurrentTarget = null;
+                        }
+                    }
+                }
+                else
+                {
+                    m_pointerRoot.gameObject.SetActive(false);
+                    
                     if (m_CurrentTarget != null)
                     {
                         m_CurrentTarget.Untarget();
+                        m_CurrentTarget = null;
                     }
-
-                    target.Target();
-                    m_CurrentTarget = target;
                 }
-            }
-            else
-            {
+                break;
+            case State.Moving:
                 if (m_CurrentTarget != null)
                 {
-                    m_CurrentTarget.Untarget();
-                    m_CurrentTarget = null;
+                    Vector3 targetVec = m_CurrentTarget.transform.position - transform.position;
+
+                    if (targetVec.magnitude < snapDistance)
+                    {
+                        EnterState(State.Working);
+                        currentProp = m_CurrentTarget.gameObject;
+                        m_CurrentTarget = null;
+                        // TODO: vibrate controller, make sound
+                    }
+                    else
+                    {
+                        // TODO: rotate to point at target
+
+                        // move towards target
+                        transform.position += targetVec.normalized * speed * Time.deltaTime;
+                    }
                 }
-            }
+                break;
+            case State.Working:
+                if (currentProp != null)
+                {
+                    Prop prop = currentProp.GetComponent<Prop>();
+                    if (prop.workRemaining <= 0)
+                    {
+                        EnterState(State.Idle);
+                    }
+                    else
+                    {
+                        bool xPressed = Input.GetButtonDown("X");
+                        if (xPressed)
+                        {
+                            prop.DoWork();
+                        }
+                    }
+                }
+                break;
         }
-        else
+    }
+
+    void EnterState(State newState)
+    {
+        ExitState(state);
+
+        state = newState;
+        switch (state)
         {
-            m_pointerRoot.gameObject.SetActive(false);
-            if (m_CurrentTarget != null)
-            {
-                m_CurrentTarget.Untarget();
-                m_CurrentTarget = null;
-            }
+            case State.Idle:
+                // set anim
+                break;
+            case State.Moving:
+                // set anim
+                break;
+            case State.Working:
+                // set anim
+                break;
         }
+    }
+
+    void ExitState(State newState)
+    {
+        
+    }
+
+    void ShowWorkPrompt(bool show)
+    {
+
     }
 }
