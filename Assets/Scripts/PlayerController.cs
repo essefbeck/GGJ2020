@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 
     public float speed;
 
-    private GameObject currentProp;
+    private Prop currentProp;
 
     enum State
     {
@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 m_aimDirection;
     private RaycastHit2D[] m_RaycastResults = new RaycastHit2D[1];
     private int m_RaycastLayerMask;
-    private Targetable m_CurrentTarget;
+    private Prop m_CurrentTarget;
 
     void Awake()
     {
@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
                     {
                         var hit = m_RaycastResults[0];
                 
-                        var target =hit.transform.GetComponent<Targetable>();
+                        var target = hit.transform.GetComponent<Prop>();
 
                         if (target != m_CurrentTarget)
                         {
@@ -114,7 +114,7 @@ public class PlayerController : MonoBehaviour
                     if (targetVec.magnitude < snapDistance)
                     {
                         EnterState(State.Working);
-                        currentProp = m_CurrentTarget.gameObject;
+                        currentProp = m_CurrentTarget;
                         m_CurrentTarget = null;
                         // TODO: vibrate controller, make sound
                     }

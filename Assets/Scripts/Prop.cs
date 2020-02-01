@@ -11,9 +11,16 @@ public class Prop : MonoBehaviour
     float workInterval = 1;
     float workTimer = 0;
 
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject m_SelectionHalo;
+    
+    public void Target()
     {
+        m_SelectionHalo.SetActive(true);    
+    }
+
+    public void Untarget()
+    {
+        m_SelectionHalo.SetActive(false);
     }
 
     // Update is called once per frame
