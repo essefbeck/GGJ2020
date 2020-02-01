@@ -20,11 +20,10 @@ public class SceneSwitcher : MonoBehaviour
     public void GotoMainScene()
     {
         SceneManager.LoadScene("Main");
-        //SceneManager.LoadScene("main");
     }
 
     public void GotoCreditsScene()
     {
-        //SceneManager.LoadScene("menu");
+        SceneManager.LoadScene("Credits");
     }
 }
