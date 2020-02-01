@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -397,11 +397,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1414257014507681899, guid: 0f8b705ac126ca7428be5a80937723e2,
-        type: 3}
-      propertyPath: speed
-      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 1414257014507681902, guid: 0f8b705ac126ca7428be5a80937723e2,
         type: 3}
@@ -825,25 +820,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1414257014507681896, guid: 0f8b705ac126ca7428be5a80937723e2,
-        type: 3}
-      propertyPath: m_DefaultControlScheme
-      value: Gamepad
-      objectReference: {fileID: 0}
-    - target: {fileID: 1414257014507681896, guid: 0f8b705ac126ca7428be5a80937723e2,
-        type: 3}
-      propertyPath: m_NeverAutoSwitchControlSchemes
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1414257014507681898, guid: 0f8b705ac126ca7428be5a80937723e2,
         type: 3}
       propertyPath: m_Name
       value: Player2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1414257014507681899, guid: 0f8b705ac126ca7428be5a80937723e2,
-        type: 3}
-      propertyPath: speed
-      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 1414257014507681902, guid: 0f8b705ac126ca7428be5a80937723e2,
         type: 3}
@@ -1238,7 +1218,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_LightVolumeOpacity: 0.4
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: ddb2a02d0000000037a1ac2a
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
