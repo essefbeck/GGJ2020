@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
 
     public float speed;
 
+    public Vector3 offset;
+
     private Prop currentProp;
 
     enum State
@@ -79,7 +81,7 @@ public class PlayerController : MonoBehaviour
             case State.Idle:
                 if (currentProp != null)
                 {
-                    transform.position = currentProp.transform.position;
+                    transform.position = currentProp.transform.position + offset;
                 }
 
                 if (m_aimDirection.sqrMagnitude > 0f)
@@ -127,7 +129,7 @@ public class PlayerController : MonoBehaviour
             case State.Moving:
                 if (m_CurrentTarget != null)
                 {
-                    Vector3 targetVec = m_CurrentTarget.transform.position - transform.position;
+                    Vector3 targetVec = m_CurrentTarget.transform.position + offset - transform.position;
 
                     if (targetVec.magnitude < snapDistance)
                     {
@@ -149,7 +151,7 @@ public class PlayerController : MonoBehaviour
             case State.Working:
                 if (currentProp != null)
                 {
-                    transform.position = currentProp.transform.position;
+                    transform.position = currentProp.transform.position + offset;
                     if (currentProp.workRemaining <= 0)
                     {
                         EnterState(State.Idle);
