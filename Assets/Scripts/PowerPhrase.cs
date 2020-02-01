@@ -13,7 +13,7 @@ public class PowerPhrase : MonoBehaviour
     private float textDisplayTimer = 0;
     private bool hasText = false;
     private Canvas canvas;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +42,6 @@ public class PowerPhrase : MonoBehaviour
 
         if (timer > 8.0f)
         {
-            enabled = true;
             textBox.text = textList[Random.Range(0, textList.Length)];
             hasText = true;
             timer = Random.Range(0.0f, 4.0f); ;
