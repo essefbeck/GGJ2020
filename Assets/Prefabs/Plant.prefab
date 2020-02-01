@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 8140506930688791600}
   - component: {fileID: 2338166475570253822}
   - component: {fileID: 1184446777041594058}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 2.97}
   serializedVersion: 2
   m_Radius: 4.76
 --- !u!50 &2338166475570253822

@@ -25,17 +25,6 @@ public class Prop : MonoBehaviour
         m_SelectionHalo.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        workTimer += Time.deltaTime;
-        if (workTimer > workInterval)
-        {
-            workTimer = 0;
-            DoWork();
-        }
-    }
-
     public void DoWork()
     {
         if (workRemaining > 0)

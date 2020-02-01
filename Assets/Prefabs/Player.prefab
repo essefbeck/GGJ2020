@@ -285,6 +285,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snapDistance: 0.2
-  speed: 5
+  speed: 15
   m_pointerRoot: {fileID: 1414257013233259268}
   m_PlayerInput: {fileID: 1414257014507681896}
