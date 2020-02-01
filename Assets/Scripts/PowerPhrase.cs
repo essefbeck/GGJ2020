@@ -12,11 +12,14 @@ public class PowerPhrase : MonoBehaviour
     private float timer = 0;
     private float textDisplayTimer = 0;
     private bool hasText = false;
-    
+    private Canvas canvas;
+
     // Start is called before the first frame update
     void Start()
     {
         timer = Random.Range(0.0f, 2.0f);
+        canvas = GetComponent<Canvas>();
+        canvas.enabled = false;
     }
 
     // Update is called once per frame
@@ -32,17 +35,17 @@ public class PowerPhrase : MonoBehaviour
             {
                 hasText = false;
                 textDisplayTimer = 0;
-                // DUNC TODO: Clear image
                 textBox.text = "";
+                canvas.enabled = false;
             }
         }
 
         if (timer > 8.0f)
         {
-            // DUNC TODO: Make stuff visible
             textBox.text = textList[Random.Range(0, textList.Length)];
             hasText = true;
             timer = Random.Range(0.0f, 4.0f); ;
+            canvas.enabled = true;
         }
 
     }
