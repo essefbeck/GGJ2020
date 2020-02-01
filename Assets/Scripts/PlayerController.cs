@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Transform m_pointerRoot;
     [SerializeField] private Animator m_Animator;
+    [SerializeField] private GameObject m_workPrompt;
     
     private Vector2 m_aimDirection;
     private RaycastHit2D[] m_RaycastResults = new RaycastHit2D[1];
@@ -166,6 +167,8 @@ public class PlayerController : MonoBehaviour
                 }
                 break;
         }
+        
+        m_workPrompt.SetActive(state == State.Working);
     }
 
     void EnterState(State newState)
@@ -201,10 +204,5 @@ public class PlayerController : MonoBehaviour
                 m_Animator.ResetTrigger(Work);
                 break;
         }
-    }
-
-    void ShowWorkPrompt(bool show)
-    {
-
     }
 }
