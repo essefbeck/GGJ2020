@@ -13,7 +13,7 @@ public class ScrollingObject : MonoBehaviour
     void Update()
     {
         float speed = ScrollManager.Instance.GetSpeed();
-        transform.position = transform.position - new Vector3(speed * Time.deltaTime, 0, 0);
+        transform.position = new Vector3(transform.position.x - speed * Time.deltaTime, transform.position.y, transform.position.y);
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
