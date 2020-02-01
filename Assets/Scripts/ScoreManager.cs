@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -8,7 +9,11 @@ public class ScoreManager : MonoBehaviour
 
     public int lives;
 
+    public TextMeshProUGUI livesText;
+
     public int score;
+
+    public TextMeshProUGUI scoreText;
 
     public AudioClip failureSound;
 
@@ -26,7 +31,8 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        scoreText.text = string.Format("Score: {0}", score);
+        livesText.text = string.Format("Lives: {0}", lives);
     }
 
     public void AddScore(int newScore)

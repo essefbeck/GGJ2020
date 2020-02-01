@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   workRemaining: 5
-  score: 0
+  score: 5
   fire: {fileID: 3468976956793131079}
   m_SelectionHalo: {fileID: 4962049950046135603}
 --- !u!1001 &3468976956793034471

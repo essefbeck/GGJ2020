@@ -8,10 +8,9 @@ public class Prop : MonoBehaviour
 
     public int score;
 
-    public GameObject fire;
+    public bool finished = false;
 
-    float workInterval = 3;
-    float workTimer = 0;
+    public GameObject fire;
 
     [SerializeField] private GameObject m_SelectionHalo;
     
@@ -27,6 +26,9 @@ public class Prop : MonoBehaviour
 
     public void DoWork()
     {
+        if (finished)
+            return;
+        
         if (workRemaining > 0)
         {
             workRemaining--;
@@ -36,6 +38,7 @@ public class Prop : MonoBehaviour
         {
             fire.SetActive(false);
             ScoreManager.Instance.AddScore(score);
+            finished = true;
         }
     }
 
