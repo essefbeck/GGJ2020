@@ -6,6 +6,11 @@ public class Prop : MonoBehaviour
 {
     public int workRemaining;
 
+    public GameObject fire;
+
+    float workInterval = 1;
+    float workTimer = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +19,12 @@ public class Prop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        workTimer += Time.deltaTime;
+        if (workTimer > workInterval)
+        {
+            workTimer = 0;
+            DoWork();
+        }
     }
 
     public void DoWork()
@@ -26,7 +36,7 @@ public class Prop : MonoBehaviour
         
         if (workRemaining <= 0)
         {
-            // set particles to something happy
+            fire.SetActive(false);
         }
     }
 }

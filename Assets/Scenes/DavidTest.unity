@@ -560,7 +560,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4226f88ef568a064a951993c18f4ee29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 0
 --- !u!64 &1754305933
 MeshCollider:
   m_ObjectHideFlags: 0
