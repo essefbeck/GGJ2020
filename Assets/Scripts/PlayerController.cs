@@ -23,12 +23,16 @@ public class PlayerController : MonoBehaviour
     private State state = State.Idle;
 
     [SerializeField] private Transform m_pointerRoot;
-    [SerializeField] private PlayerInput m_PlayerInput;
+    [SerializeField] private Animator m_Animator;
     
     private Vector2 m_aimDirection;
     private RaycastHit2D[] m_RaycastResults = new RaycastHit2D[1];
     private int m_RaycastLayerMask;
     private Prop m_CurrentTarget;
+    private static readonly int Idle = Animator.StringToHash("idle");
+    private static readonly int Moving = Animator.StringToHash("moving");
+    private static readonly int Work = Animator.StringToHash("work");
+    private static readonly int Aiming = Animator.StringToHash("aiming");
 
     void Awake()
     {
@@ -67,6 +71,7 @@ public class PlayerController : MonoBehaviour
         {
             if (currentProp != null && currentProp.workRemaining > 0)
             {
+                m_Animator.SetTrigger(Work);
                 currentProp.DoWork();
             }
         }
@@ -84,6 +89,7 @@ public class PlayerController : MonoBehaviour
 
                 if (m_aimDirection.sqrMagnitude > 0f)
                 {
+                    m_Animator.SetBool(Aiming, true);
                     m_pointerRoot.gameObject.SetActive(true);
                     m_pointerRoot.eulerAngles = new Vector3(0, 0, Vector2.SignedAngle(Vector2.up, m_aimDirection));
 
@@ -115,6 +121,7 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
+                    m_Animator.SetBool(Aiming, false);
                     m_pointerRoot.gameObject.SetActive(false);
                     
                     if (m_CurrentTarget != null)
@@ -167,20 +174,31 @@ public class PlayerController : MonoBehaviour
         switch (state)
         {
             case State.Idle:
-                // set anim
+                m_Animator.SetBool(Idle, true);
                 break;
             case State.Moving:
-                // set anim
+                m_Animator.SetBool(Moving, true);
                 break;
             case State.Working:
-                // set anim
                 break;
         }
     }
 
-    void ExitState(State newState)
+    void ExitState(State oldState)
     {
-        
+        switch (oldState)
+        {
+            case State.Idle:
+                m_Animator.SetBool(Idle, false);
+                m_Animator.SetBool(Aiming, false);
+                break;
+            case State.Moving:
+                m_Animator.SetBool(Moving, false);
+                break;
+            case State.Working:
+                m_Animator.ResetTrigger(Work);
+                break;
+        }
     }
 
     void ShowWorkPrompt(bool show)
