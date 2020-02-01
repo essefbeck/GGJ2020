@@ -6,9 +6,11 @@ public class Prop : MonoBehaviour
 {
     public int workRemaining;
 
+    public int score;
+
     public GameObject fire;
 
-    float workInterval = 1;
+    float workInterval = 3;
     float workTimer = 0;
 
     // Start is called before the first frame update
@@ -37,6 +39,15 @@ public class Prop : MonoBehaviour
         if (workRemaining <= 0)
         {
             fire.SetActive(false);
+            ScoreManager.Instance.AddScore(score);
+        }
+    }
+
+    void OnDestroy()
+    {
+        if (workRemaining > 0)
+        {
+            ScoreManager.Instance.LoseLife();
         }
     }
 }
