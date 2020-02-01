@@ -11,9 +11,15 @@ public class Prop : MonoBehaviour
     public bool finished = false;
 
     public GameObject fire;
+    public GameObject success;
 
     [SerializeField] private GameObject m_SelectionHalo;
-    
+
+    void Start()
+    {
+        success.SetActive(false);
+    }
+
     public void Target()
     {
         m_SelectionHalo.SetActive(true);    
@@ -43,6 +49,7 @@ public class Prop : MonoBehaviour
         if (workRemaining <= 0)
         {
             fire.SetActive(false);
+            success.SetActive(true);
             ScoreManager.Instance.AddScore(score);
             finished = true;
         }
