@@ -40,7 +40,7 @@ public class PowerPhrase : MonoBehaviour
         if (timer > 8.0f)
         {
             // DUNC TODO: Make stuff visible
-            textBox.text = textList[Random.Range(0, textList.Length - 1)];
+            textBox.text = textList[Random.Range(0, textList.Length)];
             hasText = true;
             timer = Random.Range(0.0f, 4.0f); ;
         }

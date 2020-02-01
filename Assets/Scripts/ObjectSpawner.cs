@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour
 {
-    public GameObject objectToSpawn;
+    public GameObject[] objectsToSpawn;
 
     public float spawnRate;
 
@@ -33,6 +33,7 @@ public class ObjectSpawner : MonoBehaviour
     void Spawn()
     {
         Vector3 location = transform.position + new Vector3(Random.Range(-spawnLocationDelta, spawnLocationDelta), Random.Range(-spawnLocationDelta, spawnLocationDelta), 0);
+        GameObject objectToSpawn = objectsToSpawn[Random.Range(0, objectsToSpawn.Length)];
         Instantiate(objectToSpawn, location, Quaternion.identity);
 
         spawnTimer = Random.Range(-spawnRateDelta, spawnRateDelta);
