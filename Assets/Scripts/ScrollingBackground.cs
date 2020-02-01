@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScrollingBackground : MonoBehaviour
 {
-     public float width;
+    private float width;
 
     void Start ()
     {
