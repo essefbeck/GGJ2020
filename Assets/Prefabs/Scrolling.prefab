@@ -10,13 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4529971301856617824}
   - component: {fileID: 5831089328582295754}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Selection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4529971301856617824
 Transform:
   m_ObjectHideFlags: 0
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 8140506930688791600}
   - component: {fileID: 2338166475570253822}
   - component: {fileID: 1184446777041594058}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Scrolling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,12 +190,12 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 4.76
 --- !u!50 &2338166475570253822
 Rigidbody2D:
   serializedVersion: 4
@@ -246,6 +246,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 21342c7dc356c904a9286a3cb1275f8f, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 21342c7dc356c904a9286a3cb1275f8f, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 21342c7dc356c904a9286a3cb1275f8f, type: 3}
       propertyPath: m_LocalPosition.x
