@@ -124,6 +124,9 @@ GameObject:
   - component: {fileID: 1414257014507681897}
   - component: {fileID: 1414257014507681896}
   - component: {fileID: 1414257014507681899}
+  - component: {fileID: 512260619278170848}
+  - component: {fileID: 3681821086762987162}
+  - component: {fileID: 2650272081219441772}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -267,8 +270,8 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a748a50b-03da-4696-8063-8643db103024
     m_ActionName: Gameplay/Work[/XInputControllerWindows/buttonWest,/Keyboard/x]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_NeverAutoSwitchControlSchemes: 1
+  m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -288,3 +291,62 @@ MonoBehaviour:
   speed: 15
   m_pointerRoot: {fileID: 1414257013233259268}
   m_PlayerInput: {fileID: 1414257014507681896}
+--- !u!114 &512260619278170848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414257014507681898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751e1cabf236fb049a2d46416f29994a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!50 &3681821086762987162
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414257014507681898}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &2650272081219441772
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414257014507681898}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 7.4499993}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 5.8785152, y: 14.899999}
+    newSize: {x: 5.87, y: 14.9}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5.8785152, y: 14.899999}
+  m_EdgeRadius: 0

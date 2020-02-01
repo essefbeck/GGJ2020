@@ -65,7 +65,10 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Performed)
         {
-            currentProp.DoWork();
+            if (currentProp != null && currentProp.workRemaining > 0)
+            {
+                currentProp.DoWork();
+            }
         }
     }
 
@@ -74,6 +77,11 @@ public class PlayerController : MonoBehaviour
         switch (state)
         {
             case State.Idle:
+                if (currentProp != null)
+                {
+                    transform.position = currentProp.transform.position;
+                }
+
                 if (m_aimDirection.sqrMagnitude > 0f)
                 {
                     m_pointerRoot.gameObject.SetActive(true);
@@ -125,6 +133,7 @@ public class PlayerController : MonoBehaviour
                     {
                         EnterState(State.Working);
                         currentProp = m_CurrentTarget;
+                        m_CurrentTarget.BeginWork();
                         m_CurrentTarget = null;
                         // TODO: vibrate controller, make sound
                     }

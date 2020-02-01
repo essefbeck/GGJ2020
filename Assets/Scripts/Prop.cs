@@ -10,9 +10,6 @@ public class Prop : MonoBehaviour
 
     public GameObject fire;
 
-    float workInterval = 3;
-    float workTimer = 0;
-
     [SerializeField] private GameObject m_SelectionHalo;
     
     public void Target()
@@ -23,6 +20,12 @@ public class Prop : MonoBehaviour
     public void Untarget()
     {
         m_SelectionHalo.SetActive(false);
+    }
+
+    public void BeginWork()
+    {
+        m_SelectionHalo.SetActive(false);
+        gameObject.layer = LayerMask.NameToLayer("Default");
     }
 
     public void DoWork()

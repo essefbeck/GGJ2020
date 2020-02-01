@@ -233,6 +233,7 @@ MonoBehaviour:
   score: 0
   fire: {fileID: 3468976956793131079}
   m_SelectionHalo: {fileID: 4962049950046135603}
+  m_SelectionCollider: {fileID: 8140506930688791600}
 --- !u!1001 &3468976956793034471
 PrefabInstance:
   m_ObjectHideFlags: 0
