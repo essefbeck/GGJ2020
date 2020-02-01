@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Haptics;
+using UnityEngine.InputSystem.Users;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,9 +11,7 @@ public class PlayerController : MonoBehaviour
 
     public float speed;
 
-    private GameObject currentProp;
-
-    private GameObject targetProp;
+    private Prop currentProp;
 
     enum State
     {
@@ -23,8 +23,17 @@ public class PlayerController : MonoBehaviour
     private State state = State.Idle;
 
     [SerializeField] private Transform m_pointerRoot;
+    [SerializeField] private PlayerInput m_PlayerInput;
     
     private Vector2 m_aimDirection;
+    private RaycastHit2D[] m_RaycastResults = new RaycastHit2D[1];
+    private int m_RaycastLayerMask;
+    private Prop m_CurrentTarget;
+
+    void Awake()
+    {
+        m_RaycastLayerMask = LayerMask.GetMask("Targetable");
+    }
     
     public void OnAim(InputAction.CallbackContext context)
     {
@@ -36,7 +45,11 @@ public class PlayerController : MonoBehaviour
         switch (context.phase)
         {
             case InputActionPhase.Performed:
-                Debug.Log("Move");
+                if (m_CurrentTarget != null)
+                {
+                    Debug.Log("Move");
+                }
+
                 break;
 
             case InputActionPhase.Started:
@@ -49,13 +62,6 @@ public class PlayerController : MonoBehaviour
 
     public void Update()
     {
-        if (currentProp != null)
-        {
-            transform.position = currentProp.transform.position;
-        }
-
-        ShowWorkPrompt(state == State.Working);
-
         switch (state)
         {
             case State.Idle:
@@ -63,22 +69,54 @@ public class PlayerController : MonoBehaviour
                 {
                     m_pointerRoot.gameObject.SetActive(true);
                     m_pointerRoot.eulerAngles = new Vector3(0, 0, Vector2.SignedAngle(Vector2.up, m_aimDirection));
+
+                    if (Physics2D.RaycastNonAlloc(m_pointerRoot.position, m_aimDirection, m_RaycastResults, 100f, m_RaycastLayerMask) > 0)
+                    {
+                        var hit = m_RaycastResults[0];
+                
+                        var target = hit.transform.GetComponent<Prop>();
+
+                        if (target != m_CurrentTarget)
+                        {
+                            if (m_CurrentTarget != null)
+                            {
+                                m_CurrentTarget.Untarget();
+                            }
+
+                            target.Target();
+                            m_CurrentTarget = target;
+                        }
+                    }
+                    else
+                    {
+                        if (m_CurrentTarget != null)
+                        {
+                            m_CurrentTarget.Untarget();
+                            m_CurrentTarget = null;
+                        }
+                    }
                 }
                 else
                 {
                     m_pointerRoot.gameObject.SetActive(false);
+                    
+                    if (m_CurrentTarget != null)
+                    {
+                        m_CurrentTarget.Untarget();
+                        m_CurrentTarget = null;
+                    }
                 }
                 break;
             case State.Moving:
-                if (targetProp != null)
+                if (m_CurrentTarget != null)
                 {
-                    Vector3 targetVec = targetProp.transform.position - transform.position;
+                    Vector3 targetVec = m_CurrentTarget.transform.position - transform.position;
 
                     if (targetVec.magnitude < snapDistance)
                     {
                         EnterState(State.Working);
-                        currentProp = targetProp;
-                        targetProp = null;
+                        currentProp = m_CurrentTarget;
+                        m_CurrentTarget = null;
                         // TODO: vibrate controller, make sound
                     }
                     else

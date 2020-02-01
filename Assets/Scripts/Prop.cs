@@ -6,15 +6,34 @@ public class Prop : MonoBehaviour
 {
     public int workRemaining;
 
-    // Start is called before the first frame update
-    void Start()
+    public int score;
+
+    public GameObject fire;
+
+    float workInterval = 3;
+    float workTimer = 0;
+
+    [SerializeField] private GameObject m_SelectionHalo;
+    
+    public void Target()
     {
+        m_SelectionHalo.SetActive(true);    
+    }
+
+    public void Untarget()
+    {
+        m_SelectionHalo.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        workTimer += Time.deltaTime;
+        if (workTimer > workInterval)
+        {
+            workTimer = 0;
+            DoWork();
+        }
     }
 
     public void DoWork()
@@ -26,7 +45,16 @@ public class Prop : MonoBehaviour
         
         if (workRemaining <= 0)
         {
-            // set particles to something happy
+            fire.SetActive(false);
+            ScoreManager.Instance.AddScore(score);
+        }
+    }
+
+    void OnDestroy()
+    {
+        if (workRemaining > 0)
+        {
+            ScoreManager.Instance.LoseLife();
         }
     }
 }
