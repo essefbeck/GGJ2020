@@ -33,6 +33,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Work"",
+                    ""type"": ""Button"",
+                    ""id"": ""a748a50b-03da-4696-8063-8643db103024"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -189,6 +197,28 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a962dbf1-9db1-4dac-a356-439f8a6f25f5"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Work"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e4eb5133-45ca-45de-84f6-26c057ee8e13"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Work"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -222,6 +252,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_Aim = m_Gameplay.FindAction("Aim", throwIfNotFound: true);
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
+        m_Gameplay_Work = m_Gameplay.FindAction("Work", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -273,12 +304,14 @@ public class @Controls : IInputActionCollection, IDisposable
     private IGameplayActions m_GameplayActionsCallbackInterface;
     private readonly InputAction m_Gameplay_Aim;
     private readonly InputAction m_Gameplay_Move;
+    private readonly InputAction m_Gameplay_Work;
     public struct GameplayActions
     {
         private @Controls m_Wrapper;
         public GameplayActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Aim => m_Wrapper.m_Gameplay_Aim;
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
+        public InputAction @Work => m_Wrapper.m_Gameplay_Work;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -294,6 +327,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Move.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
+                @Work.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWork;
+                @Work.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWork;
+                @Work.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWork;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -304,6 +340,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @Work.started += instance.OnWork;
+                @Work.performed += instance.OnWork;
+                @Work.canceled += instance.OnWork;
             }
         }
     }
@@ -330,5 +369,6 @@ public class @Controls : IInputActionCollection, IDisposable
     {
         void OnAim(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
+        void OnWork(InputAction.CallbackContext context);
     }
 }

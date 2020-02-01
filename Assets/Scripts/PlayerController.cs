@@ -47,7 +47,8 @@ public class PlayerController : MonoBehaviour
             case InputActionPhase.Performed:
                 if (m_CurrentTarget != null)
                 {
-                    Debug.Log("Move");
+                    m_pointerRoot.gameObject.SetActive(false);
+                    EnterState(State.Moving);
                 }
 
                 break;
@@ -57,6 +58,14 @@ public class PlayerController : MonoBehaviour
 
             case InputActionPhase.Canceled:
                 break;
+        }
+    }
+
+    public void OnWork(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+            currentProp.DoWork();
         }
     }
 
@@ -124,25 +133,17 @@ public class PlayerController : MonoBehaviour
                         // TODO: rotate to point at target
 
                         // move towards target
-                        transform.position += targetVec.normalized * speed * Time.deltaTime;
+                        transform.position += speed * Time.deltaTime * targetVec.normalized;
                     }
                 }
                 break;
             case State.Working:
                 if (currentProp != null)
                 {
-                    Prop prop = currentProp.GetComponent<Prop>();
-                    if (prop.workRemaining <= 0)
+                    transform.position = currentProp.transform.position;
+                    if (currentProp.workRemaining <= 0)
                     {
                         EnterState(State.Idle);
-                    }
-                    else
-                    {
-                        bool xPressed = Input.GetButtonDown("X");
-                        if (xPressed)
-                        {
-                            prop.DoWork();
-                        }
                     }
                 }
                 break;

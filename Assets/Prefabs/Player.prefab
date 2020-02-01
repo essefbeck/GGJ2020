@@ -252,6 +252,21 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 6f7f9d22-0d21-4140-8360-3337018b561e
     m_ActionName: Gameplay/Move
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1414257014507681899}
+        m_MethodName: OnWork
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a748a50b-03da-4696-8063-8643db103024
+    m_ActionName: Gameplay/Work[/XInputControllerWindows/buttonWest,/Keyboard/x]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -269,5 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d64337e418bd1284cac76160484d446f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  snapDistance: 0.2
+  speed: 5
   m_pointerRoot: {fileID: 1414257013233259268}
   m_PlayerInput: {fileID: 1414257014507681896}
