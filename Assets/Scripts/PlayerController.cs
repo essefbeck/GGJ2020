@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
 
     public float speed;
 
+    public AudioSource moveSound;
+    
     private Prop currentProp;
 
     enum State
@@ -55,6 +57,7 @@ public class PlayerController : MonoBehaviour
                 {
                     m_pointerRoot.gameObject.SetActive(false);
                     EnterState(State.Moving);
+                    moveSound.Play();
                 }
 
                 break;
