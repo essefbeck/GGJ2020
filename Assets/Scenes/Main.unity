@@ -293,6 +293,8 @@ MonoBehaviour:
   failureSound: {fileID: 8300000, guid: 714e2341ba958b84ca6d3fc862c09295, type: 3}
   successSound: {fileID: 8300000, guid: 92314589518728b438ed54507133eb7d, type: 3}
   pauseManager: {fileID: 999192490}
+  speedUpInterval: 25
+  speedUpMultiplier: 2
 --- !u!4 &285980290
 Transform:
   m_ObjectHideFlags: 0
@@ -811,12 +813,12 @@ PrefabInstance:
     - target: {fileID: 452149122589278814, guid: 8161bf7361fae4b8786c5395216e7dfa,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.1
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 452149122589278814, guid: 8161bf7361fae4b8786c5395216e7dfa,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.1
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 452149122589278814, guid: 8161bf7361fae4b8786c5395216e7dfa,
         type: 3}

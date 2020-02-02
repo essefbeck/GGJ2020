@@ -23,4 +23,9 @@ public class ScrollManager : MonoBehaviour
     {
         return speed;
     }
+
+    public void SetSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+    }
 }
