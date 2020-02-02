@@ -7,6 +7,8 @@ public class PowerPhrase : MonoBehaviour
 {
     public TextMeshProUGUI textBox;
 
+    public AudioSource speechSound;
+
     public string[] textList;
 
     private float timer = 0;
@@ -46,6 +48,7 @@ public class PowerPhrase : MonoBehaviour
             hasText = true;
             timer = Random.Range(0.0f, 4.0f); ;
             canvas.enabled = true;
+            speechSound.Play();
         }
 
     }

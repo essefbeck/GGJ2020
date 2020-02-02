@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     private RaycastHit2D[] m_RaycastResults = new RaycastHit2D[1];
     private int m_RaycastLayerMask;
     private Prop m_CurrentTarget;
+    private bool canPlaySound = true;
     private static readonly int Idle = Animator.StringToHash("idle");
     private static readonly int Moving = Animator.StringToHash("moving");
     private static readonly int Work = Animator.StringToHash("work");
@@ -57,7 +58,12 @@ public class PlayerController : MonoBehaviour
                 {
                     m_pointerRoot.gameObject.SetActive(false);
                     EnterState(State.Moving);
-                    moveSound.Play();
+                    if (canPlaySound)
+                    {
+                        moveSound.Play();
+                        canPlaySound = false;
+                    }
+                    
                 }
 
                 break;
@@ -206,6 +212,7 @@ public class PlayerController : MonoBehaviour
                 m_Animator.SetBool(Moving, true);
                 break;
             case State.Working:
+                canPlaySound = true;
                 break;
         }
     }
