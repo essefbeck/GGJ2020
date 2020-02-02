@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform m_pointerRoot;
     [SerializeField] private Animator m_Animator;
     [SerializeField] private GameObject m_workPrompt;
-    [SerializeField] private Transform m_sprite;
+    [SerializeField] private SpriteRenderer m_sprite;
     
     private Vector2 m_aimDirection;
     private RaycastHit2D[] m_RaycastResults = new RaycastHit2D[1];
@@ -87,7 +87,8 @@ public class PlayerController : MonoBehaviour
         switch (state)
         {
             case State.Idle:
-                m_sprite.rotation = new Quaternion();
+                m_sprite.transform.rotation = new Quaternion();
+                m_sprite.flipX = false;
 
                 if (currentProp != null)
                 {
@@ -157,13 +158,26 @@ public class PlayerController : MonoBehaviour
                         //Vector3 lookVec = new Vector3(targetVec.x, targetVec.y, 0);
                         //m_sprite.rotation = Quaternion.LookRotation(lookVec, Vector3.back);
 
+                        float angle = Vector3.Angle(new Vector3(0,1,0), new Vector3(targetVec.x, targetVec.y, 0));
+                        if (targetVec.x < 0)
+                        {
+                            m_sprite.flipX = true;
+                            m_sprite.transform.eulerAngles = new Vector3(0, 0, angle - 45);
+                        }
+                        else
+                        {
+                            m_sprite.transform.eulerAngles = new Vector3(0, 0, -angle + 45);
+                        }
+
                         // move towards target
                         transform.position += speed * Time.deltaTime * targetVec.normalized;
                     }
                 }
                 break;
             case State.Working:
-                m_sprite.rotation = new Quaternion();
+                m_sprite.transform.rotation = new Quaternion();
+                m_sprite.flipX = false;
+
                 if (currentProp != null)
                 {
                     transform.position = currentProp.transform.position + currentProp.offset;
