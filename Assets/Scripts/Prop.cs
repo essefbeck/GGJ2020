@@ -14,6 +14,7 @@ public class Prop : MonoBehaviour
 
     public GameObject fire;
     public GameObject success;
+    public AudioSource workSound;
 
     [SerializeField] private GameObject m_SelectionHalo;
 
@@ -42,6 +43,9 @@ public class Prop : MonoBehaviour
     {
         if (finished)
             return;
+
+        if (!workSound.isPlaying)
+            workSound.Play();
         
         if (workRemaining > 0)
         {
