@@ -16,26 +16,26 @@ public class Prop : MonoBehaviour
     public GameObject success;
     public AudioSource workSound;
 
-    [SerializeField] private GameObject m_SelectionHalo;
+    [SerializeField] private GameObject[] m_SelectionHalo;
 
     void Start()
     {
         success.SetActive(false);
     }
 
-    public void Target()
+    public void Target(int playerId)
     {
-        m_SelectionHalo.SetActive(true);    
+        m_SelectionHalo[playerId].SetActive(true);    
     }
 
-    public void Untarget()
+    public void Untarget(int playerId)
     {
-        m_SelectionHalo.SetActive(false);
+        m_SelectionHalo[playerId].SetActive(false);
     }
 
-    public void BeginWork()
+    public void BeginWork(int playerId)
     {
-        m_SelectionHalo.SetActive(false);
+        m_SelectionHalo[playerId].SetActive(false);
         gameObject.layer = LayerMask.NameToLayer("Default");
     }
 

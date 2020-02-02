@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
     private static readonly int Work = Animator.StringToHash("work");
     private static readonly int Aiming = Animator.StringToHash("aiming");
 
+    public int playerId;
+
     void Awake()
     {
         m_RaycastLayerMask = LayerMask.GetMask("Targetable");
@@ -117,10 +119,10 @@ public class PlayerController : MonoBehaviour
                         {
                             if (m_CurrentTarget != null)
                             {
-                                m_CurrentTarget.Untarget();
+                                m_CurrentTarget.Untarget(playerId);
                             }
 
-                            target.Target();
+                            target.Target(playerId);
                             m_CurrentTarget = target;
                         }
                     }
@@ -128,7 +130,7 @@ public class PlayerController : MonoBehaviour
                     {
                         if (m_CurrentTarget != null)
                         {
-                            m_CurrentTarget.Untarget();
+                            m_CurrentTarget.Untarget(playerId);
                             m_CurrentTarget = null;
                         }
                     }
@@ -140,7 +142,7 @@ public class PlayerController : MonoBehaviour
                     
                     if (m_CurrentTarget != null)
                     {
-                        m_CurrentTarget.Untarget();
+                        m_CurrentTarget.Untarget(playerId);
                         m_CurrentTarget = null;
                     }
                 }
@@ -154,7 +156,7 @@ public class PlayerController : MonoBehaviour
                     {
                         EnterState(State.Working);
                         currentProp = m_CurrentTarget;
-                        m_CurrentTarget.BeginWork();
+                        m_CurrentTarget.BeginWork(playerId);
                         m_CurrentTarget = null;
                         // TODO: vibrate controller, make sound
                     }
