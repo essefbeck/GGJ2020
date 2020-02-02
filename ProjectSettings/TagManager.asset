@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Eraser
+  - FxTemporaire
+  - ShowOnPause
   layers:
   - Default
   - TransparentFX
