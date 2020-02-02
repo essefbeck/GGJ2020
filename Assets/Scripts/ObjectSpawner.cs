@@ -10,6 +10,8 @@ public class ObjectSpawner : MonoBehaviour
 
     public float spawnRateDelta;
 
+    public float spawnRateMultiplier;
+
     public float spawnLocationDelta;
 
     private float spawnTimer;
@@ -23,6 +25,8 @@ public class ObjectSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        spawnRate = spawnRateMultiplier / ScrollManager.Instance.GetSpeed();
+
         spawnTimer += Time.deltaTime;
         if (spawnTimer > spawnRate)
         {

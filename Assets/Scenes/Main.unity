@@ -293,8 +293,8 @@ MonoBehaviour:
   failureSound: {fileID: 8300000, guid: 714e2341ba958b84ca6d3fc862c09295, type: 3}
   successSound: {fileID: 8300000, guid: 92314589518728b438ed54507133eb7d, type: 3}
   pauseManager: {fileID: 999192490}
-  speedUpInterval: 25
-  speedUpMultiplier: 2
+  speedUpInterval: 50
+  speedUpMultiplier: 1.2
 --- !u!4 &285980290
 Transform:
   m_ObjectHideFlags: 0
@@ -1561,7 +1561,8 @@ MonoBehaviour:
   - {fileID: 8140506930688791567, guid: 9a5a5156f88d8194482d1602cda5ad9b, type: 3}
   spawnRate: 2
   spawnRateDelta: 0
-  spawnLocationDelta: 14
+  spawnRateMultiplier: 10
+  spawnLocationDelta: 12
 --- !u!4 &609594386
 Transform:
   m_ObjectHideFlags: 0
@@ -1570,7 +1571,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 609594384}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 39.8, y: 0, z: 0}
+  m_LocalPosition: {x: 42.4, y: -3.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
