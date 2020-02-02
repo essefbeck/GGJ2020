@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -345,7 +345,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7843138, g: 0.7843138, b: 0.7843138, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1334,6 +1334,51 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1414257014507681896, guid: 0f8b705ac126ca7428be5a80937723e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414257014507681896, guid: 0f8b705ac126ca7428be5a80937723e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414257014507681896, guid: 0f8b705ac126ca7428be5a80937723e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414257014507681896, guid: 0f8b705ac126ca7428be5a80937723e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414257014507681896, guid: 0f8b705ac126ca7428be5a80937723e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionId
+      value: 633af32f-3ab8-4b2b-a5ff-c6dad103d940
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414257014507681896, guid: 0f8b705ac126ca7428be5a80937723e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionName
+      value: Gameplay/Pause[/XInputControllerWindows/start,/Keyboard/escape]
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414257014507681896, guid: 0f8b705ac126ca7428be5a80937723e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 999192490}
+    - target: {fileID: 1414257014507681896, guid: 0f8b705ac126ca7428be5a80937723e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: pauseControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414257014507681896, guid: 0f8b705ac126ca7428be5a80937723e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1414257014507681898, guid: 0f8b705ac126ca7428be5a80937723e2,
         type: 3}
       propertyPath: m_Name
@@ -1408,7 +1453,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 1c38dee9507cd11468acc7ff74ac69d9, type: 2}
+      objectReference: {fileID: 22100000, guid: fefd50ea72b14894396bd08a057f8f26,
+        type: 2}
     - target: {fileID: 3860073224567042490, guid: 0f8b705ac126ca7428be5a80937723e2,
         type: 3}
       propertyPath: m_Sprite
@@ -1641,7 +1687,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7843138, g: 0.7843138, b: 0.7843138, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2383,6 +2429,51 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1414257014507681896, guid: 0f8b705ac126ca7428be5a80937723e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414257014507681896, guid: 0f8b705ac126ca7428be5a80937723e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414257014507681896, guid: 0f8b705ac126ca7428be5a80937723e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414257014507681896, guid: 0f8b705ac126ca7428be5a80937723e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414257014507681896, guid: 0f8b705ac126ca7428be5a80937723e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionId
+      value: 633af32f-3ab8-4b2b-a5ff-c6dad103d940
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414257014507681896, guid: 0f8b705ac126ca7428be5a80937723e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionName
+      value: Gameplay/Pause[/XInputControllerWindows/start,/Keyboard/escape]
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414257014507681896, guid: 0f8b705ac126ca7428be5a80937723e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 999192490}
+    - target: {fileID: 1414257014507681896, guid: 0f8b705ac126ca7428be5a80937723e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: pauseControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414257014507681896, guid: 0f8b705ac126ca7428be5a80937723e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1414257014507681898, guid: 0f8b705ac126ca7428be5a80937723e2,
         type: 3}
       propertyPath: m_Name
@@ -2839,6 +2930,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 582512575}
   player2: {fileID: 1104125788}
+  gameOverRestartButton: {fileID: 135897832}
 --- !u!225 &999192491
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2880,7 +2972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1356060648}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!114 &999192494
@@ -2892,16 +2984,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 999192487}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
+  m_RepeatRate: 0.1
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_PointAction: {fileID: 1054132383583890850, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_MoveAction: {fileID: 3710738434707379630, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_SubmitAction: {fileID: 2064916234097673511, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_CancelAction: {fileID: -1967631576421560919, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_LeftClickAction: {fileID: 8056856818456041789, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_MiddleClickAction: {fileID: 3279352641294131588, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_RightClickAction: {fileID: 3837173908680883260, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_ScrollWheelAction: {fileID: 4502412055082496612, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_TrackedDevicePositionAction: {fileID: 4754684134866288074, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 1025543830046995696, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_TrackedDeviceSelectAction: {fileID: 2559092417903258184, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
 --- !u!1 &1104125788 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1414257014507681898, guid: 0f8b705ac126ca7428be5a80937723e2,
@@ -3136,7 +3247,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7843138, g: 0.7843138, b: 0.7843138, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -3649,7 +3760,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7843138, g: 0.7843138, b: 0.7843138, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -3902,7 +4013,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7843138, g: 0.7843138, b: 0.7843138, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1

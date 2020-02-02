@@ -41,6 +41,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""633af32f-3ab8-4b2b-a5ff-c6dad103d940"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -202,7 +210,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""a962dbf1-9db1-4dac-a356-439f8a6f25f5"",
                     ""path"": ""<Gamepad>/buttonWest"",
-                    ""interactions"": """",
+                    ""interactions"": ""Tap"",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Work"",
@@ -217,6 +225,28 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""Work"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""01f40ae8-71cb-4657-862a-9174ebe23461"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fcfe3f0a-bab0-4857-930d-d6a3dc57a1e4"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -253,6 +283,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Gameplay_Aim = m_Gameplay.FindAction("Aim", throwIfNotFound: true);
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
         m_Gameplay_Work = m_Gameplay.FindAction("Work", throwIfNotFound: true);
+        m_Gameplay_Pause = m_Gameplay.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -305,6 +336,7 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_Aim;
     private readonly InputAction m_Gameplay_Move;
     private readonly InputAction m_Gameplay_Work;
+    private readonly InputAction m_Gameplay_Pause;
     public struct GameplayActions
     {
         private @Controls m_Wrapper;
@@ -312,6 +344,7 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @Aim => m_Wrapper.m_Gameplay_Aim;
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
         public InputAction @Work => m_Wrapper.m_Gameplay_Work;
+        public InputAction @Pause => m_Wrapper.m_Gameplay_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -330,6 +363,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Work.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWork;
                 @Work.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWork;
                 @Work.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWork;
+                @Pause.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -343,6 +379,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Work.started += instance.OnWork;
                 @Work.performed += instance.OnWork;
                 @Work.canceled += instance.OnWork;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -370,5 +409,6 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnAim(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
         void OnWork(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

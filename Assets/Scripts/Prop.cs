@@ -63,7 +63,7 @@ public class Prop : MonoBehaviour
 
     void OnDestroy()
     {
-        if (workRemaining > 0)
+        if (Time.timeScale > 0 && PauseManager.gameStarted && workRemaining > 0)
         {
             ScoreManager.Instance.LoseLife();
         }

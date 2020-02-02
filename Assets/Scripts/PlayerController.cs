@@ -48,11 +48,17 @@ public class PlayerController : MonoBehaviour
     
     public void OnAim(InputAction.CallbackContext context)
     {
+        if (Time.timeScale < 1f)
+            return;
+        
         m_aimDirection = context.ReadValue<Vector2>();
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (Time.timeScale < 1f)
+            return;
+        
         switch (context.phase)
         {
             case InputActionPhase.Performed:
@@ -80,6 +86,9 @@ public class PlayerController : MonoBehaviour
 
     public void OnWork(InputAction.CallbackContext context)
     {
+        if (Time.timeScale < 1f)
+            return;
+        
         if (context.phase == InputActionPhase.Performed)
         {
             if (currentProp != null && currentProp.workRemaining > 0)

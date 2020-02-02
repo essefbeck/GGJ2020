@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
@@ -12,8 +14,9 @@ public class PauseManager : MonoBehaviour
 
 	public GameObject player1;
 	public GameObject player2;
-
-    private bool gameStarted = false;
+	public GameObject gameOverRestartButton;
+	
+    public static bool gameStarted = false;
 
     private List<GameObject> activePlayers;
 
@@ -29,27 +32,26 @@ public class PauseManager : MonoBehaviour
 		showGameStart();
 	}
 
+	
+	
 	// Update is called once per frame
 	void Update () {
-
-		//uses the p button to pause and unpause the game
-		if(Input.GetKeyDown(KeyCode.Escape))
-		{
-			if(Time.timeScale == 1)
-			{
-				Time.timeScale = 0;
-				showPaused();
-			} else if (Time.timeScale == 0)
-            {
-				Time.timeScale = 1;
-				hidePaused();
-			}
-		}
-        else if(Input.GetKeyDown(KeyCode.A))
+		
+		if(player1 != null && !player1.activeSelf && Gamepad.all.Count > 0 && Gamepad.all[0].buttonSouth.wasPressedThisFrame)
         {
 			enablePlayer(player1);
-			hideGameStart();
+			
+			if (!gameStarted)
+				hideGameStart();
         }
+
+		if (player2 != null && !player2.activeSelf && Gamepad.all.Count > 1 && Gamepad.all[1].buttonSouth.wasPressedThisFrame)
+		{
+			enablePlayer(player2);
+			
+			if (!gameStarted)
+				hideGameStart();
+		}
 
         if (gameStarted)
         {
@@ -110,11 +112,13 @@ public class PauseManager : MonoBehaviour
 	public void showGameOver()
     {
 		Time.timeScale = 0;
+		gameStarted = false;
 		foreach(GameObject g in gameOverObjects)
         {
 			if (g != null)
                 g.SetActive(true);
 		}
+		EventSystem.current.SetSelectedGameObject(gameOverRestartButton);
 	}
 
 	//hides objects with ShowOnGameOver tag

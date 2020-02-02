@@ -28,6 +28,14 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "633af32f-3ab8-4b2b-a5ff-c6dad103d940",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -189,7 +197,7 @@
                     "name": "",
                     "id": "a962dbf1-9db1-4dac-a356-439f8a6f25f5",
                     "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
+                    "interactions": "Tap",
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Work",
@@ -204,6 +212,28 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Work",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "01f40ae8-71cb-4657-862a-9174ebe23461",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fcfe3f0a-bab0-4857-930d-d6a3dc57a1e4",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
