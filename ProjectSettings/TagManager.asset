@@ -8,6 +8,7 @@ TagManager:
   - FxTemporaire
   - ShowOnPause
   - ShowOnGameOver
+  - ShowOnGameStart
   layers:
   - Default
   - TransparentFX
