@@ -1559,9 +1559,9 @@ MonoBehaviour:
   - {fileID: 8140506930688791567, guid: bd4771d88a4448648b8b9274a3616491, type: 3}
   - {fileID: 8140506930688791567, guid: 6d4ebcb5d48ca1048b2da117d4580a0a, type: 3}
   - {fileID: 8140506930688791567, guid: 9a5a5156f88d8194482d1602cda5ad9b, type: 3}
-  spawnRate: 3
-  spawnRateDelta: 0.2
-  spawnLocationDelta: 10
+  spawnRate: 2
+  spawnRateDelta: 0
+  spawnLocationDelta: 14
 --- !u!4 &609594386
 Transform:
   m_ObjectHideFlags: 0
