@@ -12,9 +12,14 @@ public class PauseManager : MonoBehaviour
 	public GameObject player1;
 	public GameObject player2;
 
-	// Use this for initialization
-	void Start () {
+    private bool gameStarted = false;
 
+    private List<GameObject> activePlayers;
+
+	// Use this for initialization
+	void Start () 
+    {
+        activePlayers = new List<GameObject>();
 		startGameObjects = GameObject.FindGameObjectsWithTag("ShowOnGameStart");
 		pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
 		gameOverObjects = GameObject.FindGameObjectsWithTag("ShowOnGameOver");
@@ -44,6 +49,20 @@ public class PauseManager : MonoBehaviour
 			enablePlayer(player1);
 			hideGameStart();
         }
+
+        if (gameStarted)
+        {
+            bool allPlayersDead = true;
+            foreach (GameObject player in activePlayers)
+            {
+                if (player != null)
+                    allPlayersDead = false;
+            }
+            if (allPlayersDead)
+            {
+                showGameOver();
+            }
+        }
 	}
 
 
@@ -55,16 +74,16 @@ public class PauseManager : MonoBehaviour
 
 	//controls the pausing of the scene
 	public void pauseControl()
-    {
-			if(Time.timeScale == 1)
-			{
-				Time.timeScale = 0;
-				showPaused();
-			} else if (Time.timeScale == 0)
-            {
-				Time.timeScale = 1;
-				hidePaused();
-			}
+{
+        if(Time.timeScale == 1)
+        {
+            Time.timeScale = 0;
+            showPaused();
+        } else if (Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+            hidePaused();
+        }
 	}
 
 	//shows objects with ShowOnPause tag
@@ -116,6 +135,7 @@ public class PauseManager : MonoBehaviour
 			if (g != null)
 				g.SetActive(true);
         }
+        gameStarted = false;
     }
 
     public void hideGameStart()
@@ -126,11 +146,13 @@ public class PauseManager : MonoBehaviour
 			if (g != null)
 				g.SetActive(false);
 		}
+        gameStarted = true;
 	}
 
     private void enablePlayer(GameObject obj)
     {
 		obj.SetActive(true);
+        activePlayers.Add(obj);
     }
 
 	//loads inputted level
