@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 285980291}
   m_Layer: 0
   m_Name: ScoreManager
-  m_TagString: ShowOnGameStart
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
