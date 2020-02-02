@@ -7,14 +7,20 @@ public class PauseManager : MonoBehaviour
 {
     GameObject[] pauseObjects;
     GameObject[] gameOverObjects;
+	GameObject[] startGameObjects;
+
+	public GameObject player1;
+	public GameObject player2;
 
 	// Use this for initialization
 	void Start () {
-		Time.timeScale = 1;
+
+		startGameObjects = GameObject.FindGameObjectsWithTag("ShowOnGameStart");
 		pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
 		gameOverObjects = GameObject.FindGameObjectsWithTag("ShowOnGameOver");
 		hidePaused();
         hideGameOver();
+		showGameStart();
 	}
 
 	// Update is called once per frame
@@ -33,6 +39,11 @@ public class PauseManager : MonoBehaviour
 				hidePaused();
 			}
 		}
+        else if(Input.GetKeyDown(KeyCode.A))
+        {
+			enablePlayer(player1);
+			hideGameStart();
+        }
 	}
 
 
@@ -96,6 +107,31 @@ public class PauseManager : MonoBehaviour
 			    g.SetActive(false);
 		}
 	}
+
+    public void showGameStart()
+    {
+		Time.timeScale = 0;
+		foreach (GameObject g in startGameObjects)
+        {
+			if (g != null)
+				g.SetActive(true);
+        }
+    }
+
+    public void hideGameStart()
+    {
+		Time.timeScale = 1;
+		foreach (GameObject g in startGameObjects)
+		{
+			if (g != null)
+				g.SetActive(false);
+		}
+	}
+
+    private void enablePlayer(GameObject obj)
+    {
+		obj.SetActive(true);
+    }
 
 	//loads inputted level
 	public void LoadLevel(string level)
