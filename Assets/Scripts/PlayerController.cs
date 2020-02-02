@@ -11,8 +11,6 @@ public class PlayerController : MonoBehaviour
 
     public float speed;
 
-    public Vector3 offset;
-
     private Prop currentProp;
 
     enum State
@@ -27,6 +25,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform m_pointerRoot;
     [SerializeField] private Animator m_Animator;
     [SerializeField] private GameObject m_workPrompt;
+    [SerializeField] private Transform m_sprite;
     
     private Vector2 m_aimDirection;
     private RaycastHit2D[] m_RaycastResults = new RaycastHit2D[1];
@@ -85,9 +84,11 @@ public class PlayerController : MonoBehaviour
         switch (state)
         {
             case State.Idle:
+                m_sprite.rotation = new Quaternion();
+
                 if (currentProp != null)
                 {
-                    transform.position = currentProp.transform.position + offset;
+                    transform.position = currentProp.transform.position + currentProp.offset;
                 }
 
                 if (m_aimDirection.sqrMagnitude > 0f)
@@ -137,7 +138,7 @@ public class PlayerController : MonoBehaviour
             case State.Moving:
                 if (m_CurrentTarget != null)
                 {
-                    Vector3 targetVec = m_CurrentTarget.transform.position + offset - transform.position;
+                    Vector3 targetVec = (m_CurrentTarget.transform.position +  m_CurrentTarget.offset) - transform.position;
 
                     if (targetVec.magnitude < snapDistance)
                     {
@@ -150,6 +151,8 @@ public class PlayerController : MonoBehaviour
                     else
                     {
                         // TODO: rotate to point at target
+                        //Vector3 lookVec = new Vector3(targetVec.x, targetVec.y, 0);
+                        //m_sprite.rotation = Quaternion.LookRotation(lookVec, Vector3.back);
 
                         // move towards target
                         transform.position += speed * Time.deltaTime * targetVec.normalized;
@@ -157,9 +160,10 @@ public class PlayerController : MonoBehaviour
                 }
                 break;
             case State.Working:
+                m_sprite.rotation = new Quaternion();
                 if (currentProp != null)
                 {
-                    transform.position = currentProp.transform.position + offset;
+                    transform.position = currentProp.transform.position + currentProp.offset;
                     if (currentProp.workRemaining <= 0)
                     {
                         EnterState(State.Idle);

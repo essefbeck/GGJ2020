@@ -199,7 +199,6 @@ Transform:
   - {fileID: 3468976956793162855}
   - {fileID: 5824816406727416076}
   - {fileID: 4529971301856617824}
-  - {fileID: 5588621084183638168}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -317,6 +316,7 @@ MonoBehaviour:
   workRemaining: 5
   score: 5
   finished: 0
+  offset: {x: -4, y: 2, z: 2}
   fire: {fileID: 3468976956793131079}
   success: {fileID: 5824816406727574828}
   m_SelectionHalo: {fileID: 4962049950046135603}

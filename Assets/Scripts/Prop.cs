@@ -9,6 +9,8 @@ public class Prop : MonoBehaviour
     public int score;
 
     public bool finished = false;
+    
+    public Vector3 offset;
 
     public GameObject fire;
     public GameObject success;
