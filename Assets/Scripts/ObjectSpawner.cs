@@ -10,6 +10,8 @@ public class ObjectSpawner : MonoBehaviour
 
     public float spawnRateDelta;
 
+    public float spawnRateMultiplier;
+
     public float spawnLocationDelta;
 
     private float spawnTimer;
@@ -23,6 +25,8 @@ public class ObjectSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        spawnRate = spawnRateMultiplier / ScrollManager.Instance.GetSpeed();
+
         spawnTimer += Time.deltaTime;
         if (spawnTimer > spawnRate)
         {
@@ -32,9 +36,11 @@ public class ObjectSpawner : MonoBehaviour
 
     void Spawn()
     {
-        Vector3 location = transform.position + new Vector3(Random.Range(-spawnLocationDelta, spawnLocationDelta), Random.Range(-spawnLocationDelta, spawnLocationDelta), 0);
+        Vector3 spawnLocation = Quaternion.AngleAxis(Random.Range(0, 180), new Vector3(0,0,1)) * new Vector3(0, spawnLocationDelta, 0);
+        spawnLocation = spawnLocation + transform.position;
+
         GameObject objectToSpawn = objectsToSpawn[Random.Range(0, objectsToSpawn.Length)];
-        Instantiate(objectToSpawn, location, Quaternion.identity);
+        Instantiate(objectToSpawn, spawnLocation, Quaternion.identity);
 
         spawnTimer = Random.Range(-spawnRateDelta, spawnRateDelta);
     }

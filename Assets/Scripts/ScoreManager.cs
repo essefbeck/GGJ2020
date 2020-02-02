@@ -23,11 +23,16 @@ public class ScoreManager : MonoBehaviour
 
     public PauseManager pauseManager;
 
+    public float speedUpInterval;
+    private float nextSpeedUp;
+    public float speedUpMultiplier;
+
     // Start is called before the first frame update
     void Start()
     {
         Instance = this;
         audioSource = GetComponent<AudioSource>();
+        nextSpeedUp = speedUpInterval;
     }
 
     // Update is called once per frame
@@ -45,6 +50,13 @@ public class ScoreManager : MonoBehaviour
         {
             audioSource.clip = successSound;
             audioSource.Play();
+        }
+        
+        if (score >= nextSpeedUp)
+        {
+            nextSpeedUp += speedUpInterval;
+            float speed = ScrollManager.Instance.GetSpeed() * speedUpMultiplier;
+            ScrollManager.Instance.SetSpeed(speed);
         }
     }
 
