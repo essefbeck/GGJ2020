@@ -1742,6 +1742,8 @@ MonoBehaviour:
   - {fileID: 8140506930688791567, guid: bd4771d88a4448648b8b9274a3616491, type: 3}
   - {fileID: 8140506930688791567, guid: 6d4ebcb5d48ca1048b2da117d4580a0a, type: 3}
   - {fileID: 8140506930688791567, guid: 9a5a5156f88d8194482d1602cda5ad9b, type: 3}
+  - {fileID: 8140506930688791567, guid: 0a30bed13e3fe85468a0194c148f3f4f, type: 3}
+  - {fileID: 8140506930688791567, guid: 01cdc4ebdef3e024c8eb9eb01ff8ac02, type: 3}
   spawnRate: 2
   spawnRateDelta: 0
   spawnRateMultiplier: 10

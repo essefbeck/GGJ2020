@@ -470,7 +470,7 @@ GameObject:
   - component: {fileID: 2338166475570253822}
   - component: {fileID: 1184446777041594058}
   m_Layer: 8
-  m_Name: Desk
+  m_Name: Printer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -535,7 +535,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 48464615c688a874d9b972ea35f2313b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 65c3b89cbca7955429a6a649954767d3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -607,8 +607,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46741f4d4cf9ad240800423285593eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  workRemaining: 9
-  score: 15
+  workRemaining: 7
+  score: 10
   finished: 0
   offset: {x: -5, y: 4, z: 4}
   fire: {fileID: 3468976956793131079}
@@ -771,11 +771,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 21342c7dc356c904a9286a3cb1275f8f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.34
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 21342c7dc356c904a9286a3cb1275f8f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.06
+      value: 7.37
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 21342c7dc356c904a9286a3cb1275f8f, type: 3}
       propertyPath: m_LocalPosition.z
