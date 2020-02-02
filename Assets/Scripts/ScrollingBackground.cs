@@ -6,6 +6,8 @@ public class ScrollingBackground : MonoBehaviour
 {
     private float width;
 
+    private float offset;
+
     void Start ()
     {
         width = GetComponent<MeshRenderer>().bounds.size.x;
@@ -14,7 +16,7 @@ public class ScrollingBackground : MonoBehaviour
     void Update ()
     {
         float speed = ScrollManager.Instance.GetSpeed();
-        Vector2 offset = new Vector2(Time.time * speed / width, 0);
-        GetComponent<Renderer>().material.mainTextureOffset = offset;
+        offset += Time.deltaTime * speed / width;
+        GetComponent<Renderer>().material.mainTextureOffset = new Vector2(offset, 0);
     }
 }
