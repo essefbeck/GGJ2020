@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,7 +15,7 @@ public class PauseManager : MonoBehaviour
 
 	// Use this for initialization
 	void Start () {
-
+        
 		startGameObjects = GameObject.FindGameObjectsWithTag("ShowOnGameStart");
 		pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
 		gameOverObjects = GameObject.FindGameObjectsWithTag("ShowOnGameOver");
