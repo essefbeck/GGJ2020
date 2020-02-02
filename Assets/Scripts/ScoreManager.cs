@@ -21,6 +21,8 @@ public class ScoreManager : MonoBehaviour
 
     private AudioSource audioSource;
 
+    public PauseManager pauseManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,7 +60,7 @@ public class ScoreManager : MonoBehaviour
 
         if (lives <= 0)
         {
-            // lose game
+            pauseManager.showGameOver();
         }
     }
 }

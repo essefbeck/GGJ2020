@@ -6,12 +6,15 @@ using UnityEngine.SceneManagement;
 public class PauseManager : MonoBehaviour
 {
     GameObject[] pauseObjects;
+    GameObject[] gameOverObjects;
 
 	// Use this for initialization
 	void Start () {
 		Time.timeScale = 1;
 		pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
+		gameOverObjects = GameObject.FindGameObjectsWithTag("ShowOnGameOver");
 		hidePaused();
+        hideGameOver();
 	}
 
 	// Update is called once per frame
@@ -56,7 +59,8 @@ public class PauseManager : MonoBehaviour
 	//shows objects with ShowOnPause tag
 	public void showPaused()
     {
-		foreach(GameObject g in pauseObjects){
+		foreach(GameObject g in pauseObjects)
+        {
 			g.SetActive(true);
 		}
 	}
@@ -66,7 +70,30 @@ public class PauseManager : MonoBehaviour
     {
 		foreach(GameObject g in pauseObjects)
         {
-			g.SetActive(false);
+			if (g != null)
+			    g.SetActive(false);
+		}
+	}
+
+    //shows objects with ShowOnGameOver tag
+	public void showGameOver()
+    {
+		Time.timeScale = 0;
+		foreach(GameObject g in gameOverObjects)
+        {
+			if (g != null)
+                g.SetActive(true);
+		}
+	}
+
+	//hides objects with ShowOnGameOver tag
+	public void hideGameOver()
+    {
+		Time.timeScale = 1;
+		foreach(GameObject g in gameOverObjects)
+        {
+			if (g != null)
+			    g.SetActive(false);
 		}
 	}
 
